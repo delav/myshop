@@ -24,8 +24,8 @@ class ProductSize(models.Model):
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'productsize'
-        verbose_name_plural = 'productsizes'
+        verbose_name = 'size'
+        verbose_name_plural = 'sizes'
 
     def __str__(self):
         return self.name
