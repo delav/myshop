@@ -205,8 +205,14 @@ ul.errorlist {
 
 .product-detail .price {
     color:#333;
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
+    margin : 30px 0 30px 0;;
+}
+
+.product-detail .quantity {
+    color:#333;
+    font-size:16px;
 }
 
 .product-detail img {

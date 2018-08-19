@@ -1,21 +1,21 @@
+# coding: utf-8
 from django.contrib import admin
-from .models import Category, Product, ProductSize
+from .models import Category, Product
 
+
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
-    prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Category, CategoryAdmin)
+    prepopulated_fields = {'slug': ('name',)}  # 指定slug自动使用name赋值
 
 
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'category', 'price', 'stock', 'available', 'created', 'updated']
     list_filter = ['available', 'created', 'updated', 'category']
     list_editable = ['price', 'stock', 'available']
     prepopulated_fields = {'slug': ('name',)}
-admin.site.register(Product, ProductAdmin)
 
 
-class ProductSizeAdmin(admin.ModelAdmin):
-    list_display = ['name']
-admin.site.register(ProductSize, ProductSizeAdmin)
+
 

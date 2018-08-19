@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
+from django.views.decorators.cache import cache_page
 
 
+@cache_page(60)
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -15,6 +17,7 @@ def product_list(request, category_slug=None):
                                                       'products': products})
 
 
+@cache_page(60)
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
