@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
@@ -25,3 +26,14 @@ def product_detail(request, id, slug):
                   'shop/product/detail.html',
                   {'product': product,
                    'cart_product_form': cart_product_form})
+
+
+@cache_page(60)
+def product_search(request):
+    q = request.GET.get('q')
+    if not q:
+        return render(request, 'shop/base.html')
+    post_list = Product.objects.filter(name__icontains=q)
+
+    return render(request, 'shop/product/search.html', {
+                                               'search_list': post_list})
