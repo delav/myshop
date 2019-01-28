@@ -102,7 +102,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shopdb',
         'USER': 'root',
-        'PASSWORD': '729814',
+        'PASSWORD': '******',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
